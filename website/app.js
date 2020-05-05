@@ -10,12 +10,11 @@ let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
 
 // Helper Function Start
 const fetchApiData = async () => {
-    const zipcode = document.getElementById('zip').value;
+    let zipcode = document.getElementById('zip').value;
     if(zipcode == ''){
-        alert('Please! put zip code');
-        return
+        zipcode = 99501
     }
-    const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},bd&appid=${KEY}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${KEY}`;
     
     const fetchData = await fetch(url);
     try {
@@ -39,7 +38,6 @@ const postDataToTheServer = async (url = '', data = {}) => {
 }
 
 // update UI
-
 // data will be injected here
 const date = document.getElementById('date');
 const temp = document.getElementById('temp');
